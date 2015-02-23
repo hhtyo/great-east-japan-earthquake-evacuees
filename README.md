@@ -30,7 +30,7 @@ make data
 
 **Transformation**
 
-Column totals and calculated changes in evacuee numbers are deleted. The first column, which has prefecture IDs and names, is split into two columns: [ISO 3166-2:JP](http://en.wikipedia.org/wiki/ISO_3166-2:JP) codes and prefecture names. Any notes that were in a table cell are in a new column at the end of the same row. Lastly, the data date is appended to the end of the each row. Missing or empty values are marked with 'NA'.
+In the intermediate CSVs, column totals and calculated changes in evacuee numbers are deleted. The first column, which has prefecture IDs and names, is split into two columns: [ISO 3166-2:JP](http://en.wikipedia.org/wiki/ISO_3166-2:JP) codes and prefecture names. Any notes that were in a table cell are in a new column at the end of the same row. Lastly, the data date is appended to the end of the each row. Missing or empty values are marked with 'NA'.
 
 ### Resources
 
