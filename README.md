@@ -10,7 +10,7 @@ The inspiration for extracting these data came from a comment and a [visualizati
 
 ### Description
 
-[Great East Japan Earthquake evacuees](http://www.reconstruction.go.jp/topics/main-cat2/sub-cat2-1/hinanshasuu.html) by prefecture, compiled by Japan's [Reconstruction Agency](http://www.reconstruction.go.jp/), and originally published as [PDF files](https://github.com/hhtyo/evacuees-by-prefecture/tree/master/data/pdf).
+[Great East Japan Earthquake evacuees](http://www.reconstruction.go.jp/topics/main-cat2/sub-cat2-1/hinanshasuu.html) by prefecture, compiled by Japan's [Reconstruction Agency](http://www.reconstruction.go.jp/), and originally published as [PDF files](https://github.com/hhtyo/great-east-japan-earthquake-evacuees/tree/master/archive/pdf).
 
 ## Data Preparation
 
