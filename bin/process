@@ -1,0 +1,54 @@
+# encoding: utf-8
+
+require_relative '../lib/evacuees'
+
+urls = DataSources.new('datasources.yaml')
+  .update(Evacuees::Source.web, Evacuees::Source.xpath)
+
+monthly = Evacuees::Monthly.new('data')
+
+monthly_by_prefecture = Evacuees::MonthlyByPrefecture.new('data')
+
+sources = urls.map do |url|
+  source = Evacuees::Source.new(url, 'archive')
+  extractor = Evacuees::PDFExtractor.new(source.pdf_path)
+  source.download.extract(extractor)
+end
+
+# add the single image PDF
+url = 'http://www.reconstruction.go.jp/topics/120413hinansya.pdf'
+source = Evacuees::Source.new(url, 'archive')
+# this is a little silly because we're not actually extracting the PDF.
+extractor = Evacuees::PDFExtractor.new(source.pdf_path)
+source.download.extract(extractor)
+sources.push(source)
+
+sources.each do |source|
+  monthly.add_data(source.data)
+  monthly_by_prefecture.add_data(source.data)
+end
+
+File.write(monthly.path, monthly.sort.to_csv)
+File.write(monthly_by_prefecture.path, monthly_by_prefecture.sort.to_csv)
+
+view = {
+  id: 'graph',
+  label: 'Graph',
+  type: 'Graph',
+  state: {
+    group: '年月日',
+    series: ['計'],
+    graphType: 'lines-and-points'
+  }
+}
+
+data_package = DataPackage.new('great-east-japan-earthquake-evacuees')
+  .add_title('所在都道府県別の避難者等の数')
+  .add_license('ODC-PDDL-1.0')
+  .add_keywords(['Japan', '3/11', 'earthquake', 'evacuees', 'refugees'])
+  .add_source(Evacuees::Source.metadata)
+  .add_resource(monthly.metadata)
+  .add_resource(monthly_by_prefecture.metadata)
+  .add_view(view)
+
+File.write('datapackage.json', data_package.to_json)

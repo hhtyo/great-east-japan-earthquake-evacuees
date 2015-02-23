@@ -1,0 +1,11 @@
+# Root logger options
+log4j.rootLogger=INFO, stdout
+
+# PDFBox logger level
+log4j.logger.org.apache.pdfbox=ERROR
+
+# Direct log messages to stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.out
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern=%d{ISO8601} %-5p [%c{2}]: %m%n

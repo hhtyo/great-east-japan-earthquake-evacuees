@@ -1,0 +1,79 @@
+{
+  "name": "great-east-japan-earthquake-evacuees",
+  "title": "所在都道府県別の避難者等の数",
+  "license": "ODC-PDDL-1.0",
+  "keywords": [
+    "Japan",
+    "3/11",
+    "earthquake",
+    "evacuees",
+    "refugees"
+  ],
+  "sources": [
+    {
+      "name": "Reconstruction Agency",
+      "web": "http://www.reconstruction.go.jp/topics/main-cat2/sub-cat2-1/hinanshasuu.html"
+    }
+  ],
+  "resources": [
+    {
+      "name": "monthly",
+      "path": "data/monthly.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "計",
+            "type": "number"
+          },
+          {
+            "name": "年月日",
+            "type": "date"
+          }
+        ]
+      }
+    },
+    {
+      "name": "monthly-by-prefecture",
+      "path": "data/monthly-by-prefecture.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "都道府県コード",
+            "type": "string",
+            "description": "ISO 3166-2：JPコード"
+          },
+          {
+            "name": "都道府県名",
+            "type": "string"
+          },
+          {
+            "name": "計",
+            "type": "number"
+          },
+          {
+            "name": "年月日",
+            "type": "date"
+          }
+        ]
+      }
+    }
+  ],
+  "views": [
+    {
+      "id": "graph",
+      "label": "Graph",
+      "type": "Graph",
+      "state": {
+        "group": "年月日",
+        "series": [
+          "計"
+        ],
+        "graphType": "lines-and-points"
+      }
+    }
+  ]
+}
