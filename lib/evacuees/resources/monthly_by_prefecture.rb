@@ -20,7 +20,7 @@ module Evacuees
             type: 'string'
           }, {
             name: '計',
-            type: 'number'
+            type: 'integer'
           }, {
             name: '年月日',
             type: 'date'
